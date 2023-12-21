@@ -4,7 +4,8 @@
 name: backend
 namespace: helm #backend
 replicas: 1
-image: cisko6/backendubuntu2 #ma alpine  #cisko6/backendubuntu #cisko6/onpk_backend
+image: 
+#cisko6/backendubuntu2 #ma alpine  #cisko6/backendubuntu #cisko6/onpk_backend
 tag: latest
 
 serviceName: svc-backend
