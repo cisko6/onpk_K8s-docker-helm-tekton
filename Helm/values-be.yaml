@@ -17,6 +17,10 @@ secret_name: my-secret
 isSvcFrontend: false
 react_api: "" # no need
 
+# 4.4.15-debian-10-r8
+
+
+
 # mongo
 # mongodb:
 #   enabled: true
@@ -41,16 +45,13 @@ react_api: "" # no need
 
 
 mongodb:
-  databaseName: platformsdb
-  replicaCount: 1
-  version: 13.4.0
-  port: 27017
-  username: admin
-  password: password
   service:
     type: ClusterIP
   persistence:
     enabled: false
+  #auth:
+    #rootUser: mongoroot
+    #rootPassword: mongotest
   initdbScripts:
     init_script.js: |
       db = db.getSiblingDB("platformsdb");
