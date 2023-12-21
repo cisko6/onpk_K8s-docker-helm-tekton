@@ -1,0 +1,54 @@
+apiVersion: v1
+entries:
+  mongodb:
+  - annotations:
+      category: Database
+    apiVersion: v2
+    appVersion: 6.0.2
+    created: "2023-12-21T17:15:12.2688198+01:00"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: MongoDB(R) is a relational open source NoSQL database. Easy to use,
+      it stores data in JSON-like documents. Automated scalability and high-performance.
+      Ideal for developing cloud native applications.
+    digest: a3675f451ed9c15cc8ce282da41a333794c4faa47aa2829e2915e4ec6103a049
+    home: https://github.com/bitnami/charts/tree/main/bitnami/mongodb
+    icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
+    keywords:
+    - mongodb
+    - database
+    - nosql
+    - cluster
+    - replicaset
+    - replication
+    maintainers:
+    - name: Bitnami
+      url: https://github.com/bitnami/charts
+    name: mongodb
+    sources:
+    - https://github.com/bitnami/containers/tree/main/bitnami/mongodb
+    - https://mongodb.org
+    urls:
+    - https://github.com/cisko6/helm-chart/charts/mongodb-13.4.0.tgz
+    version: 13.4.0
+  semestralka:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-12-21T17:15:12.2662441+01:00"
+    dependencies:
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.4.0
+    description: A Helm chart for Kubernetes
+    digest: 075b3dcfd0c761a210ca543dc8747ff4db068099e7098ef02cf0eb0b1ef24d69
+    name: semestralka
+    type: application
+    urls:
+    - https://github.com/cisko6/helm-chart/semestralka-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-12-21T17:15:12.2626624+01:00"
