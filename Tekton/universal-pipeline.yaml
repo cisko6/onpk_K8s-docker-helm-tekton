@@ -1,0 +1,108 @@
+# nepotrebujem git credentials ked mam verejny repo, ci?
+
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: clone-build-push-deploy
+  namespace: helm
+spec:
+  description: |
+    This pipeline clones a git repo, builds a Docker image with buildah and
+    pushes it to a registry
+  params:
+    - name: repo-url
+      type: string
+    - name: image-reference
+      type: string
+    - name: dockerfile
+      type: string
+    - name: context
+      type: string
+
+    # Helm parameters
+    - name: chartPath
+      type: string
+    - name: releaseName
+      type: string
+    - name: helmNamespace
+      type: string
+    - name: valuesFile
+      type: string
+
+  workspaces:
+    - name: shared-data
+    - name: docker-credentials
+  tasks:
+    - name: fetch-source
+      taskRef:
+        name: git-clone
+      params:
+        - name: url
+          value: $(params.repo-url)
+        - name: revision
+          value: main
+      workspaces:
+      - name: output
+        workspace: shared-data
+
+    - name: build-push
+      runAfter: ["fetch-source"]
+      taskRef:
+        name: buildah
+      params:
+        - name: IMAGE
+          value: $(params.image-reference)
+        - name: DOCKERFILE
+          value: $(params.dockerfile)
+        - name: CONTEXT
+          value: $(params.context)
+        - name: FORMAT
+          value: docker
+      workspaces:
+      - name: dockerconfig
+        workspace: docker-credentials
+      - name: source
+        workspace: shared-data
+
+    - name: update-image-version
+      runAfter: ["build-push"]
+      taskSpec:
+        steps:
+          - name: update-version
+            image: alpine:3.18
+            script: |
+              #!/usr/bin/env sh
+              apk add --no-cache yq
+              yq -i 'image = "$(params.IMAGE)"' $(workspaces.source.path)/$(params.valuesFile)
+          - name: check
+            image: alpine:3.18
+            command: ["cat"]
+            args:
+              - "$(workspaces.source.path)/$(params.valuesFile)"
+        params:
+          - name: IMAGE
+      params:
+        - name: IMAGE
+          value: $(params.image-reference)
+      workspaces:
+        - name: source
+          workspace: shared-data
+
+    - name: helm-upgrade
+      runAfter: ["update-image-version"]
+      taskRef:
+        name: helm-upgrade-from-source
+      params:
+        - name: sourceRepo
+          value: $(params.repo-url)
+        - name: chartPath
+          value: $(params.chartPath)
+        - name: releaseName
+          value: $(params.releaseName)
+        - name: namespace
+          value: $(params.helmNamespace)
+        - name: valuesFile
+          value: $(params.valuesFile)
+      workspaces:
+        - name: source
+          workspace: shared-data
