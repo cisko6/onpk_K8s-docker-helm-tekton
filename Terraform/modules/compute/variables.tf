@@ -14,21 +14,10 @@ variable "minikube_userdata" {
   type = string
 }
 
-variable "minikube_priv_port_id" {
-  
-}
+variable "minikube_priv_port_id" {}
 
-variable "instance_settings" {
-  
-}
+variable "instance_settings" {}
 
-variable "bastion_fip" {
-  
-}
+variable "bastion_fip" {}
 
-variable "bastion_priv_port" {
-  
-}
-
-
-
+variable "bastion_priv_port" {}

@@ -31,7 +31,3 @@ variable "bastion_userdata" {
 variable "minikube_userdata" {
   type = string
 }
-
-# variable "CIDR" {
-#   type = string
-# }

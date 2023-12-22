@@ -1,5 +1,4 @@
 output "BH_public_IP" {
-  #value = openstack_networking_floatingip_v2.bastion_fip.address
   value = module.network.BH_public_IP
 }
 
