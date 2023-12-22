@@ -39,5 +39,9 @@ sudo mv kubectl /usr/local/bin
 echo 'alias k=kubectl' | cat - /home/ubuntu/.bashrc > temp && mv temp /home/ubuntu/.bashrc
 source /home/ubuntu/.bashrc
 
+# SET UP MINIKUBE
+minikube start --profile semestralka --nodes 3
+minikube addons enable ingress
+
 # SIGNAL ZE UZ SKONCIL SCRIPT
 touch /tmp/user_data_minikube_complete

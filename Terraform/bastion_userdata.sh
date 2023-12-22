@@ -3,8 +3,7 @@ nameserver="nameserver 8.8.8.8"
 private_IP_addr="${IP_addr}"
 
 # PRIDANIE DNS SERVERA
-#sudo echo "$nameserver" >> /etc/resolv.conf
-echo "$nameserver" | sudo tee -a /etc/resolv.conf
+sudo echo "$nameserver" >> /etc/resolv.conf
 
 sudo apt update
 
