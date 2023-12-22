@@ -15,6 +15,9 @@ module "compute" {
   minikube_priv_port_id = module.network.minikube_priv_port_id
   instance_settings = var.instance_settings
   bastion_fip = module.network.bastion_fip
+
+  sec_group_name = var.sec_group_name
+  public_CIDR = var.public_CIDR
 }
 
 

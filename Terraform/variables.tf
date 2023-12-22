@@ -31,3 +31,11 @@ variable "bastion_userdata" {
 variable "minikube_userdata" {
   type = string
 }
+
+variable "sec_group_name" {
+  type = string
+}
+
+variable "public_CIDR" {
+  type = string
+}

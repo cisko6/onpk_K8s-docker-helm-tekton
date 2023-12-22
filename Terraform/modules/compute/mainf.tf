@@ -31,6 +31,41 @@ resource "local_file" "rsa_private_key" {
   filename = var.key_name
 }
 
+###
+
+resource "openstack_compute_secgroup_v2" "security_group_1" {
+  name        = var.sec_group_name
+  description = "SecGroup for instances"
+
+  rule {
+    from_port   = 22
+    to_port     = 22
+    ip_protocol = "tcp"
+    cidr        = var.public_CIDR
+  }
+
+  rule {
+    from_port   = 80
+    to_port     = 80
+    ip_protocol = "tcp"
+    cidr        = var.public_CIDR
+  }
+
+  rule {
+    from_port   = 443
+    to_port     = 443
+    ip_protocol = "tcp"
+    cidr        = var.public_CIDR
+  }
+
+  rule {
+    ip_protocol = "icmp"
+    from_port   = -1
+    to_port     = -1
+    cidr        = var.public_CIDR
+  }
+}
+
 #######################################################################################
 
 ## SCRIPT FILES ##
@@ -54,12 +89,12 @@ data "template_file" "minikube_data" {
 ## INSTANCES ##
 
 resource "openstack_compute_instance_v2" "bastion_instance" {
-  depends_on = [ openstack_compute_instance_v2.minikube_instance, data.template_file.bastion_data]
+  depends_on = [ openstack_compute_instance_v2.minikube_instance, data.template_file.bastion_data ]
   name            = var.instance_settings[1].name
   image_name      = var.instance_settings[1].image_name
   flavor_name     = var.instance_settings[1].flavor_name
   key_pair        = var.key_name
-  security_groups = ["default"]
+  security_groups = [ openstack_compute_secgroup_v2.security_group_1.id ]
   user_data       = data.template_file.bastion_data.rendered
 
   network {
@@ -73,7 +108,7 @@ resource "openstack_compute_instance_v2" "minikube_instance" {
   image_name      = var.instance_settings[0].image_name
   flavor_name     = var.instance_settings[0].flavor_name
   key_pair        = var.key_name
-  security_groups = ["default"]
+  security_groups = [ openstack_compute_secgroup_v2.security_group_1.id ]
 
   user_data       = data.template_file.minikube_data.rendered
 

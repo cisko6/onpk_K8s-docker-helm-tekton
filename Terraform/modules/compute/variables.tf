@@ -14,6 +14,14 @@ variable "minikube_userdata" {
   type = string
 }
 
+variable "sec_group_name" {
+  type = string
+}
+
+variable "public_CIDR" {
+  type = string
+}
+
 variable "minikube_priv_port_id" {}
 
 variable "instance_settings" {}
@@ -21,3 +29,5 @@ variable "instance_settings" {}
 variable "bastion_fip" {}
 
 variable "bastion_priv_port" {}
+
+
