@@ -26,6 +26,17 @@ Tento repozitár obsahuje Terraform konfiguračné súbory pre správu IaaC. Ter
 
   Tento príkaz sa používa na zničenie infraštruktúry spravovanej Terraform. Tento príkaz je opakom `terraform apply`. Zruší zdroje spravované vaším Terraform projektom.
 
+
+  - `--auto-approve`: Preskočí interaktívne schválenie plánu pred jeho aplikáciou.
+
+### Terraform Plan, Apply a Destroy pre konkrétny zdroj
+
+Použitie parametra `target` umožňuje zamerať sa na špecifický zdroj v Terraform konfigurácii:
+
+- **Plan pre konkrétny zdroj**: 
+  ```sh
+  terraform plan -target=aws_instance.my_instance
+
   - `--auto-approve`: Preskočí interaktívne schválenie plánu pred jeho aplikáciou.
 
 ### Formátovanie Terraform
