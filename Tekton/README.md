@@ -1,55 +1,55 @@
 
-# Tekton CI/CD for Helm Chart Deployment
+# Tekton CI/CD pre Nasadenie Helm Chart
 
-## Overview
-This Tekton CI/CD setup is designed to automate the deployment process for both the frontend and backend components of the Helm chart provided earlier. It includes configurations for pipeline runs and a universal pipeline applicable to both components.
+## Prehľad
+Táto konfigurácia Tekton CI/CD je navrhnutá na automatizáciu procesu nasadenia pre frontendové a backendové komponenty Helm chartu poskytnutého skôr. Obsahuje konfigurácie pre behy pipeline a univerzálnu pipeline použiteľnú pre oba komponenty.
 
-## Files Description
-1. `backend-pipeline-run.yaml` - Pipeline run configuration for the backend.
-2. `docker-credentials.yaml` - Contains Docker credentials for registry access.
-3. `frontend-pipeline-run.yaml` - Pipeline run configuration for the frontend.
-4. `universal-pipeline.yaml` - A universal pipeline used by both frontend and backend.
+## Popis Súborov
+1. `backend-pipeline-run.yaml` - Konfigurácia behu pipeline pre backend.
+2. `docker-credentials.yaml` - Obsahuje prihlasovacie údaje Docker pre prístup k registru.
+3. `frontend-pipeline-run.yaml` - Konfigurácia behu pipeline pre frontend.
+4. `universal-pipeline.yaml` - Univerzálna pipeline používaná frontendom aj backendom.
 
-## Installation
+## Inštalácia
 
-To install Tekton pipelines and dashboard, use the following commands:
+Na inštaláciu Tekton pipelines a dashboardu použite nasledujúce príkazy:
 
-- Install Tekton pipelines:
+- Inštalácia Tekton pipelines:
   ```
   kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
   ```
-- Install Tekton dashboard:
+- Inštalácia Tekton dashboardu:
   ```
   kubectl apply --filename https://storage.googleapis.com/tekton-releases/dashboard/latest/release.yaml
   ```
-- Install Tekton CLI (tkn) on Windows:
+- Inštalácia Tekton CLI (tkn) na Windows:
   ```
   choco install tektoncd-cli
   ```
 
-## Starting the Dashboard
+## Spustenie Dashboardu
 
-To start the Tekton dashboard, use one of the following methods:
+Na spustenie Tekton dashboardu použite jednu z nasledujúcich metód:
 
-- Freezed window (keeps the window open):
+- Zamrznuté okno (udrží okno otvorené):
   ```
   kubectl --namespace tekton-pipelines port-forward svc/tekton-dashboard 9097:9097
   ```
-- Continue using the command line without freezing the window:
+- Pokračovanie v používaní príkazového riadku bez zamrznutia okna:
   ```
   Start-Process kubectl -ArgumentList "--namespace tekton-pipelines port-forward svc/tekton-dashboard 9097:9097" -NoNewWindow
   ```
 
-## Running the Pipeline
+## Spustenie Pipeline
 
-To deploy your application using the Tekton pipeline, apply your pipeline configuration and start the pipeline:
+Na nasadenie vašej aplikácie pomocou Tekton pipeline aplikujte vašu konfiguráciu pipeline a spustite pipeline:
 
-1. Apply your pipeline configuration:
+1. Aplikujte vašu konfiguráciu pipeline:
    ```
    kubectl apply -f your-pipeline.yaml
    ```
 
-2. Start the pipeline:
+2. Spustite pipeline:
    ```
-   tkn pipeline start <pipeline-name> -n <namespace>
+   tkn pipeline start <meno-pipeline> -n <namespace>
    ```
