@@ -32,7 +32,7 @@ Tento repozitár obsahuje Terraform konfiguračné súbory pre správu IaaC. Ter
 
 Použitie parametra `target` umožňuje zamerať sa na špecifický resource v Terraform konfigurácii:
 
-- **Plan pre konkrétny zdroj**: 
+- **Plan pre konkrétny resource**: 
   ```sh
   terraform <plan/apply/destroy> -target='<názov_targetu>'
   terraform apply -target='openstack_compute_instance_v2.minikube_instance'

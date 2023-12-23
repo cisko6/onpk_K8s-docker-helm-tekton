@@ -1,32 +1,27 @@
-# Docker Setup for Backend and Frontend
+# Docker nastavenie pre Backend a Frontend
 
-This repository contains the Docker configurations for both the backend and frontend components of our application.
+Tento repozitár obsahuje Docker konfigurácie pre backend a frontend časti našej aplikácie.
 
 ## Backend
 
-The backend is built using Golang and is containerized using Docker.
+Backend je zostrojený pomocou Golang a je kontajnerizovaný pomocou Dockeru.
 
-### Dockerfile Explained
+### Vysvetlenie Dockerfile
 
-- **Base Image**: Starts with `golang:alpine` as the base image for building the application.
-- **Building the App**: Copies the application code into the container and builds a static binary named `main`.
-- **Final Image**: Uses a `scratch` image (a very small base image) for the final build, containing only the compiled application.
-- **Port**: The container exposes port `9080`.
-- **Entrypoint**: The compiled binary `./main` is set as the entrypoint.
+- **Base Image**: Začína s obrazom `golang:alpine` ako základný obraz pre zostavenie aplikácie.
+- **Building the App**: Kopíruje kód aplikácie do kontajnera a zostavuje statický binárny súbor s názvom `main`.
+- **Final Image**: Pre finálne zostavenie sa používa obraz `scratch` (veľmi malý základný obraz), ktorý obsahuje iba zostavenú aplikáciu.
+- **Port**:  Kontajner vystavuje port `9080`.
+- **Entrypoint**: Skompilovaný binárny súbor `./main` je nastavený ako vstupný bod.
 
-- **Plan pre konkrétny zdroj**: 
-  ```sh
-  terraform <plan/apply/destroy> -target='<názov_targetu>'
-  terraform apply -target='openstack_compute_instance_v2.minikube_instance'
-
-### Building the Docker Image
+### Vytvorenie imagu Docker
 
   ```sh
   docker build -t '<názov_imagu>' .
   docker build -t 'backend' .
   ```
 
-### Running the Docker Container
+### Spustenie kontajnera Docker
 
   ```sh
   docker run '<názov_imagu>'
@@ -35,23 +30,23 @@ The backend is built using Golang and is containerized using Docker.
 
 ## Frontend
 
-The frontend is a Node.js application, which is served using Nginx in its Docker container.
+Frontend je aplikácia Node.js, ktorá je poskytovaná pomocou Nginx vo svojom Docker kontajneri.
 
-### Dockerfile Explained
+### Dockerfile Vysvetlenie
 
-- **Build Stage**: Uses `node:12-alpine` as the base image. Installs dependencies and builds the application.
-- **Final Stage**: Uses `nginx:stable-alpine` as the base image for serving the application. Copies the built application from the previous stage. Sets up Nginx to serve the application.
-- **Port**: The container exposes port `8080`.
-- **Entrypoint**: Custom script to set environment variables and start Nginx.
+- **Build Stage**: Používa `node:12-alpine` ako základný obraz. Inštaluje závislosti a zostavuje aplikáciu.
+- **Final Stage**: Používa `nginx:stable-alpine` ako základný obraz na poskytovanie aplikácie. Kopíruje zostavenú aplikáciu zo predchádzajúcej fázy. Nastavuje Nginx na poskytovanie aplikácie.
+- **Port**: Kontajner vystavuje port `8080`.
+- **Entrypoint**: Vlastný skript na nastavenie premenných prostredia a spustenie Nginx.
 
-### Building the Docker Image
+### Vytvorenie imagu Docker
 
   ```sh
   docker build -t '<názov_imagu>' .
   docker build -t 'frontend' .
   ```
 
-### Running the Docker Container
+### Spustenie kontajnera Docker
 
   ```sh
   docker run -p '<port>':'<port>' '<názov_imagu>'
