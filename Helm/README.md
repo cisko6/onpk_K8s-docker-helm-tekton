@@ -9,34 +9,34 @@ Pre nasadenie backendových a frontendových komponentov aplikácie použite nas
 
 1. Na odinštalovanie predchádzajúcich nasadení (ak existujú):
    ```
-   helm uninstall backend -n `<namespace>`
-   helm uninstall frontend -n `<namespace>`
+   helm uninstall backend -n <namespace>
+   helm uninstall frontend -n <namespace>
    ```
 
-2. To install the backend and frontend:
+2. Na inštaláciu backendu a frontendu:
    ```
-   helm install backend . --values .\values-be.yaml -n helm
-   helm install frontend . --values .\values-fe.yaml -n helm
+   helm install backend . --values .\values-be.yaml -n <namespace>
+   helm install frontend . --values .\values-fe.yaml -n <namespace>
    ```
 
-## Helm Repository Setup
+## Nastavenie Helm Repozitára
 
-To set up the Helm repository for this chart:
+Pre nastavenie Helm repozitára pre tento chart:
 
-1. Enable GitHub Pages:
-   - Navigate to the repository settings.
-   - Go to the Pages section.
-   - Set the source to `/root` or as required.
+1. Zapnite GitHub Pages:
+   - Prejdite do nastavení repozitára.
+   - Prejdite do sekcie Pages.
+   - Nastavte zdroj na `/root` alebo podľa potreby.
 
-2. Package and index the Helm chart:
+2. Zbaľte a indexujte Helm chart:
    ```
    helm package .
-   helm repo index . --url https://github.com/cisko6/helm-chart --merge index.yaml
+   helm repo index . --url <your-github-repository> --merge index.yaml
    ```
 
-3. For users to add and use your Helm repository:
+3. Aby užívatelia mohli pridať a používať váš Helm repozitár:
    ```
-   helm repo add helm-chart https://cisko6.github.io/helm-chart
-   helm search repo helm-chart
-   helm install [release-name] helm-chart/[chart-name] --version [version]
+   helm repo add <repository-name> <repository-url>
+   helm search repo
+   helm install <release-name> <repository-name>/<chart-name> --version [version]
    ```
