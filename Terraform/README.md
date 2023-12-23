@@ -34,7 +34,7 @@ Použitie parametra `target` umožňuje zamerať sa na špecifický resource v T
 
 - **Plan pre konkrétny zdroj**: 
   ```sh
-  terraform <plan,apply,destroy> -target='<názov_targetu>'
+  terraform <plan/apply/destroy> -target='<názov_targetu>'
   terraform apply -target='openstack_compute_instance_v2.minikube_instance'
 
 - `--auto-approve`: Preskočí interaktívne schválenie plánu pred jeho aplikáciou.
