@@ -14,11 +14,15 @@ The backend is built using Golang and is containerized using Docker.
 - **Port**: The container exposes port `9080`.
 - **Entrypoint**: The compiled binary `./main` is set as the entrypoint.
 
+- **Plan pre konkrétny zdroj**: 
+  ```sh
+  terraform <plan/apply/destroy> -target='<názov_targetu>'
+  terraform apply -target='openstack_compute_instance_v2.minikube_instance'
+
 #### Building the Docker Image
 
-    ```sh
-    docker build -t myapp-backend .
-    
-    ```
+  ```sh
+  docker build -t myapp-backend .
+
 
 ### Running the Docker Container
