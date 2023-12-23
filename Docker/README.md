@@ -37,7 +37,7 @@ Frontend je aplikácia Node.js, ktorá je poskytovaná pomocou Nginx vo svojom D
 - **Build Stage**: Používa `node:12-alpine` ako základný obraz. Inštaluje závislosti a zostavuje aplikáciu.
 - **Final Stage**: Používa `nginx:stable-alpine` ako základný obraz na poskytovanie aplikácie. Kopíruje zostavenú aplikáciu zo predchádzajúcej fázy. Nastavuje Nginx na poskytovanie aplikácie.
 - **Port**: Kontajner vystavuje port `8080`.
-- **Entrypoint**: Vlastný skript na nastavenie premenných prostredia a spustenie Nginx.
+- **Entrypoint**: Vlastný skript na nastavenie premenných prostredia a spustenie `Nginx`.
 
 ### Vytvorenie imagu Docker
 

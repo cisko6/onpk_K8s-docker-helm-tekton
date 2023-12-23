@@ -52,7 +52,7 @@ Použitie parametra `target` umožňuje zamerať sa na špecifický resource v T
 - **Inicializácia**: Spustite `terraform init` na inicializáciu projektu.
 - **Aplikovanie zmien**: Po vykonaní zmien spustite `terraform plan`, aby ste videli, aké zmeny budú aplikované, a `terraform apply` na aplikáciu týchto zmien.
 - **Formátovanie kódu**: Použite `terraform fmt -recursive` na formátovanie kódu.
-- **Zničenie infraštruktúry**: Použite `terraform destroy` na odstránenie všetkých zdrojov spravovaných týmto
+- **Zničenie infraštruktúry**: Použite `terraform destroy` na odstránenie všetkých resourcov spravovaných týmto
 
 ## Dodatočné informácie
 
