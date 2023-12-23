@@ -18,3 +18,5 @@ The backend is built using Golang and is containerized using Docker.
 
 ```sh
 docker build -t myapp-backend .
+
+#### Running the Docker Container 
