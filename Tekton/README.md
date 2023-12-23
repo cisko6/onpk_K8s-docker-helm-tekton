@@ -2,13 +2,13 @@
 # Tekton CI/CD pre Nasadenie Helm Chart
 
 ## Prehľad
-Táto konfigurácia Tekton CI/CD je navrhnutá na automatizáciu procesu nasadenia pre frontendové a backendové komponenty Helm chartu poskytnutého skôr. Obsahuje konfigurácie pre behy pipeline a univerzálnu pipeline použiteľnú pre oba komponenty.
+Táto konfigurácia Tekton CI/CD je navrhnutá na automatizáciu procesu nasadenia pre frontendové a backendové komponenty Helm chartu. Obsahuje konfigurácie pre behy pipeline a univerzálnu pipeline použiteľnú pre oba komponenty.
 
 ## Popis Súborov
-1. `backend-pipeline-run.yaml` - Konfigurácia behu pipeline pre backend.
-2. `docker-credentials.yaml` - Obsahuje prihlasovacie údaje Docker pre prístup k registru.
+1. `universal-pipeline.yaml` - Univerzálna pipeline používaná frontendom aj backendom.
+2. `backend-pipeline-run.yaml` - Konfigurácia behu pipeline pre backend.
 3. `frontend-pipeline-run.yaml` - Konfigurácia behu pipeline pre frontend.
-4. `universal-pipeline.yaml` - Univerzálna pipeline používaná frontendom aj backendom.
+4. `docker-credentials.yaml` - Obsahuje prihlasovacie údaje Docker pre prístup k registru.
 
 ## Inštalácia
 
