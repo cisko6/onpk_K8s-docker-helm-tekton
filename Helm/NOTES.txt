@@ -1,0 +1,28 @@
+
+# Poznámky k Helm Chart
+
+Ďakujem za inštaláciu Helm chartu! Tu sú niektoré dôležité poznámky a inštrukcie:
+
+1.Informácie o charte:
+   - Názov chartu: [bude vyplnené]
+   - Verzia chartu: [bude vyplnené]
+
+2.Konfigurácia:
+   - Prosím, preskúmajte súbory values-be.yaml a values-fe.yaml pre možnosti konfigurácie backendu a frontendu.
+   - Prispôsobte hodnoty podľa vašich požiadaviek.
+
+3.Závislosti:
+   - Skontrolujte súbor Chart.lock pre presné verzie použitých závislostí.
+
+4.Prístup k aplikácii:
+   - Po nasadení môžete svoju aplikáciu pristupovať na IP adrese a porte frontendovej služby.
+
+5. Riešenie problémov:
+   - Pri akýchkoľvek problémoch sa obráťte na dokumentáciu Helm chartu alebo adresár templates pre viac detailov o zdrojoch Kubernetes.
+
+6.Ďalšie prispôsobenie:
+   - Môžete upraviť šablóny v adresári templates pre ďalšie prispôsobenie zdrojov Kubernetes.
+
+7.Aktualizácie a rollbacky:
+   - Na aktualizáciu chartu upravte príslušné hodnoty a vykonajte upgrade pomocou príkazov Helm.
+   - Helm tiež umožňuje rollback na predchádzajúce verzie, ak je to potrebné.
