@@ -45,5 +45,5 @@ Tento repozitár obsahuje Terraform konfiguračné súbory pre správu IaaC. Ter
 
 ## Dodatočné informácie
 
-- **Dokumentácia Terraform**: Pre komplexnú dokumentáciu Terraform, navštívte [Terraform Docs](https://www.terraform.io/docs).
+- **Dokumentácia Terraform**: Pre komplexnú dokumentáciu Terraform [Terraform Docs](https://www.terraform.io/docs).
 - **Best Practices***: Odporúča sa oboznámiť sa s [Najlepšími postupmi Terraform](https://www.terraform-best-practices.com/).
