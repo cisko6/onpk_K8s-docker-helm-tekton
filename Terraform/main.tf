@@ -6,23 +6,23 @@ module "network" {
 module "compute" {
   source = "./modules/compute"
 
-  create_key = var.create_key
-  key_name = var.key_name
+  create_key        = var.create_key
+  key_name          = var.key_name
   minikube_userdata = var.minikube_userdata
-  bastion_userdata = var.bastion_userdata
+  bastion_userdata  = var.bastion_userdata
 
-  bastion_priv_port = module.network.bastion_priv_port
+  bastion_priv_port     = module.network.bastion_priv_port
   minikube_priv_port_id = module.network.minikube_priv_port_id
-  instance_settings = var.instance_settings
-  bastion_fip = module.network.bastion_fip
+  instance_settings     = var.instance_settings
+  bastion_fip           = module.network.bastion_fip
 
   sec_group_name = var.sec_group_name
-  public_CIDR = var.public_CIDR
+  public_CIDR    = var.public_CIDR
 }
 
 
 resource "null_resource" "wait_for_bastion" {
-  depends_on = [ module.compute.bastion_fip_association ]
+  depends_on = [module.compute.bastion_fip_association]
 
   connection {
     type        = "ssh"
@@ -39,7 +39,7 @@ resource "null_resource" "wait_for_bastion" {
 }
 
 resource "null_resource" "wait_for_minikube" {
-  depends_on = [ null_resource.wait_for_bastion ]
+  depends_on = [null_resource.wait_for_bastion]
 
   # treba počkať aby bolo SSH pripojenie na minikube a nie na bastion
   provisioner "local-exec" {

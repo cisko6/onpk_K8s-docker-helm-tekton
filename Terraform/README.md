@@ -2,17 +2,7 @@
 
 ## Úvod
 
-Tento repozitár obsahuje Terraform konfiguračné súbory pre správu infraštruktúry ako kódu. Terraform je open-source nástroj pre infraštruktúru ako kód, ktorý poskytuje konzistentné rozhranie príkazového riadku (CLI) na správu stoviek cloudových služieb. Terraform kóduje cloudové API do deklaratívnych konfiguračných súborov.
-
-## Predpoklady
-
-- Terraform nainštalovaný na vašom počítači.
-- Základné porozumenie syntaxe a štruktúry Terraform.
-- Primerané prístupové práva do cloudového prostredia, s ktorým pracujete.
-
-## Nastavenie
-
-Pred začatím práce s Terraform si uistite, že máte nakonfigurované poverenia vášho cloudového poskytovateľa. Tieto poverenia sú často nastavené ako premenné prostredia alebo definované v konfiguračných súboroch Terraform.
+Tento repozitár obsahuje Terraform konfiguračné súbory pre správu IaaC. Terraform je open-source nástroj pre infraštruktúru ako kód, ktorý poskytuje konzistentné rozhranie príkazového riadku (CLI) na správu stoviek cloudových služieb. Terraform kóduje cloudové API do deklaratívnych konfiguračných súborov.
 
 ## Základné príkazy Terraform
 

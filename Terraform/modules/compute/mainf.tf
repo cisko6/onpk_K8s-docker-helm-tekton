@@ -89,12 +89,12 @@ data "template_file" "minikube_data" {
 ## INSTANCES ##
 
 resource "openstack_compute_instance_v2" "bastion_instance" {
-  depends_on = [ openstack_compute_instance_v2.minikube_instance, data.template_file.bastion_data ]
+  depends_on      = [openstack_compute_instance_v2.minikube_instance, data.template_file.bastion_data]
   name            = var.instance_settings[1].name
   image_name      = var.instance_settings[1].image_name
   flavor_name     = var.instance_settings[1].flavor_name
   key_pair        = var.key_name
-  security_groups = [ openstack_compute_secgroup_v2.security_group_1.id ]
+  security_groups = [openstack_compute_secgroup_v2.security_group_1.id]
   user_data       = data.template_file.bastion_data.rendered
 
   network {
@@ -103,14 +103,14 @@ resource "openstack_compute_instance_v2" "bastion_instance" {
 }
 
 resource "openstack_compute_instance_v2" "minikube_instance" {
-  depends_on = [ data.template_file.minikube_data ]
+  depends_on      = [data.template_file.minikube_data]
   name            = var.instance_settings[0].name
   image_name      = var.instance_settings[0].image_name
   flavor_name     = var.instance_settings[0].flavor_name
   key_pair        = var.key_name
-  security_groups = [ openstack_compute_secgroup_v2.security_group_1.id ]
+  security_groups = [openstack_compute_secgroup_v2.security_group_1.id]
 
-  user_data       = data.template_file.minikube_data.rendered
+  user_data = data.template_file.minikube_data.rendered
 
   network {
     port = var.minikube_priv_port_id
