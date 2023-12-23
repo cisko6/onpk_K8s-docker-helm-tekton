@@ -1,16 +1,16 @@
-# Helm Chart for Your Application
+# Helm Chart
 
-## Overview
-This Helm chart is designed to deploy a scalable and configurable application, with distinct frontend and backend components. The deployment configuration for each component can be customized using the provided values files: `values-fe.yaml` for the frontend and `values-be.yaml` for the backend.
+## Prehľad
+Tento Helm chart je navrhnutý na nasadenie škálovateľnej a konfigurovateľnej aplikácie s oddelenými frontendovými a backendovými komponentmi. Konfigurácia nasadenia pre každý komponent môže byť prispôsobená pomocou poskytnutých súborov s hodnotami: `values-fe.yaml` pre frontend a `values-be.yaml` pre backend.
 
-## Deployment Instructions
+## Inštrukcie na Nasadenie
 
-To deploy the backend and frontend components of the application, use the following Helm commands:
+Pre nasadenie backendových a frontendových komponentov aplikácie použite nasledujúce príkazy Helm:
 
-1. To uninstall previous deployments (if any):
+1. Na odinštalovanie predchádzajúcich nasadení (ak existujú):
    ```
-   helm uninstall backend -n helm
-   helm uninstall frontend -n helm
+   helm uninstall backend -n `<namespace>`
+   helm uninstall frontend -n `<namespace>`
    ```
 
 2. To install the backend and frontend:
