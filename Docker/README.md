@@ -20,6 +20,7 @@ The backend is built using Golang and is containerized using Docker.
   terraform apply -target='openstack_compute_instance_v2.minikube_instance'
 
 ### Building the Docker Image
+
   ```sh
   docker build -t '<názov_imagu>' .
 
