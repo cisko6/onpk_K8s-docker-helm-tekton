@@ -23,5 +23,6 @@ The backend is built using Golang and is containerized using Docker.
 
   ```sh
   docker build -t '<názov_imagu>' .
+  ```
 
 ### Running the Docker Container
