@@ -22,5 +22,7 @@ spec:
         envFrom:
           - configMapRef:
               name: {{ .Values.cm_name }}
+{{- if not .Values.isSvcFrontend }}
           - secretRef:
               name: {{ .Values.secret_name }}
+{{- end }}
